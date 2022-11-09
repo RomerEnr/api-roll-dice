@@ -1,16 +1,26 @@
-import { countWords } from "./modules/countWords.js";
-import { readWords } from "./modules/readWords.js";
-import { writeWords } from "./modules/writeWords.js";
+import { ReadWordsFile } from "./modules/Read/ReadWordsFile.js";
+import { ReadWordsInput } from "./modules/Read/ReadWordsInput.js";
+import { WriteWordsFile } from "./modules/Write/WriteWordsFile.js";
+import { CountWords } from "./modules/Count/CountWords.js";
+import { CountPattern } from "./modules/Count/CountPattern.js";
 
 const _filePath = "src/ficheros/fichero.txt";
 export const _filePath2 = "src/ficheros/fichero3.txt";
 
 const main = async() => {
-  const words = await readWords(_filePath);
-  const wordsLength = await countWords(_filePath);
-  const formatWords = words.join("\n");
-  writeWords(formatWords, _filePath2);
-  console.log(words, wordsLength);
+  const readWordsFile = new ReadWordsFile(_filePath);
+  const readWordsInput = new ReadWordsInput("Hola mundo");
+  const words = await readWordsFile.readWords();
+  words.push(...(await readWordsInput.readWords()));
+  const countWords = new CountWords(words);
+  const wordsLength = countWords.count();
+  const countPattern = new CountPattern(words, "a");
+  const aTimes = countPattern.count();
+  console.log(words, wordsLength, aTimes);
+
+  const formatedWords = words.join("\n");
+  const writeWordsFile = new WriteWordsFile(formatedWords, _filePath2);
+  writeWordsFile.writeWords();
 };
 
 await main();
