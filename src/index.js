@@ -1,36 +1,15 @@
-import fs from "fs";
-const _filePath = "src/fichero.txt";
-let words = "";
+import { countWords } from "./modules/countWords.js";
+import { readWords } from "./modules/readWords.js";
+import { wordsInNewFile } from "./modules/wordsInNewFile.js";
 
-const readWords = (filePath) =>{
-  return new Promise((resolve, reject)=>{
-    fs.readFile(filePath, (err, data) => {
-      if (err) {
-        reject(`Ha habido un ${err}`)
-      } else {
-        const line = data.toString().split("\n");
-        words = line.map(line => line.split(" ")).flat();
-        resolve(words)
-      }
-    });
-  });
+const _filePath = "src/ficheros/fichero.txt";
+export const _filePath2 = "src/ficheros/fichero2.txt";
+
+const main = async () => {
+  const fullWords = await readWords(_filePath);
+  const wordsLength = await countWords(_filePath);
+  wordsInNewFile(fullWords);
+  console.log(fullWords, wordsLength);
 };
 
-const countWords = async (_filePath)=>{
-  const words = await readWords(_filePath).then(words => words)
-                      .catch(err => console.log(err));
-  return words.length
-};
-
-// const wordsInLines = (words)=>{
-
-// }
-
-// const wordsInText = (filePath) => {
-  
-  
-
-//   return words
-
-const wordsLength = await countWords(_filePath)
-console.log(wordsLength);
+await main();
