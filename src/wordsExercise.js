@@ -1,6 +1,6 @@
-import { countWords } from "./modules/countWords.js";
-import { readWords } from "./modules/readWords.js";
-import { wordsInNewFile } from "./modules/wordsInNewFile.js";
+import { countWords } from "./modules/modules.words-files/countWords.js";
+import { readWords } from "./modules/modules.words-files/readWords.js";
+import { wordsInNewFile } from "./modules/modules.words-files/wordsInNewFile.js";
 
 
 const _filePath = "src/ficheros/fichero.txt";
