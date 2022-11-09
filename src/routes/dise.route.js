@@ -1,5 +1,5 @@
 
-import { Dise } from "../modules/dise/Dise.js";
+import { Dise } from "../modules/Dise/Dise.js";
 
 export const routeDise = (app) => {
   app.get("/Dise", (req, res) => {
