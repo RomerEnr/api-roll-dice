@@ -1,5 +1,6 @@
 import fs from "fs";
 const _filePath = "src/fichero.txt";
+const _filePath2 = "src/fichero2.txt";
 let words = "";
 
 const readWords = (filePath) =>{
@@ -19,18 +20,24 @@ const readWords = (filePath) =>{
 const countWords = async (_filePath)=>{
   const words = await readWords(_filePath).then(words => words)
                       .catch(err => console.log(err));
-  return words.length
+  return words.length;
 };
 
-// const wordsInLines = (words)=>{
+const wordsInNewFile = async (words = []) => { 
+  words.map(word =>{
+    fs.appendFileSync(_filePath2, `${word}\n`, "utf-8", (err)=>{
+      if (err){
+        return `Ha habido un ${err}`;
+      } else {
+        return "Archivo salvado con exito";
+      };
 
-// }
+    });
+  });
+};
 
-// const wordsInText = (filePath) => {
-  
-  
-
-//   return words
-
-const wordsLength = await countWords(_filePath)
+const fullWords = await readWords(_filePath);
+console.log(fullWords);
+const wordsLength = await countWords(_filePath);
 console.log(wordsLength);
+wordsInNewFile(fullWords);
