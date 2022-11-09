@@ -1,10 +1,10 @@
-import { Dice } from "./classes/Dice.js";
-import { helloWorldServer, initServer } from "./server.js";
+import { rollDice, initServer, home, rollDiceSimple } from "./server.js";
 
 const main = () => {
-  
-  initServer(3000)
-  helloWorldServer();
+  home();
+  initServer(3000);
+  rollDiceSimple();
+  rollDice();
 
 };
 
