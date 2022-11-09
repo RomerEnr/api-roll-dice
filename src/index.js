@@ -5,10 +5,11 @@ import { wordsInNewFile } from "./modules/wordsInNewFile.js";
 const _filePath = "src/ficheros/fichero.txt";
 export const _filePath2 = "src/ficheros/fichero2.txt";
 
+const main = async () => {
+  const fullWords = await readWords(_filePath);
+  const wordsLength = await countWords(_filePath);
+  wordsInNewFile(fullWords);
+  console.log(fullWords, wordsLength);
+};
 
-
-const fullWords = await readWords(_filePath);
-console.log(fullWords);
-const wordsLength = await countWords(_filePath);
-console.log(wordsLength);
-wordsInNewFile(fullWords);
+await main();
