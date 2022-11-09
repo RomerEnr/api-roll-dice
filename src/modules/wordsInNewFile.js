@@ -1,5 +1,5 @@
 import fs from "fs";
-import { _filePath2 } from "../index.js";
+import { _filePath2 } from "../wordsExercise.js";
 
 export const wordsInNewFile = async (words = []) => {
   words.map(word => {
