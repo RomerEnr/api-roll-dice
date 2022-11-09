@@ -4,8 +4,8 @@ import { WriteWordsFile } from "./modules/Write/WriteWordsFile.js";
 import { CountWords } from "./modules/Count/CountWords.js";
 import { CountPattern } from "./modules/Count/CountPattern.js";
 
-const _filePath = "src/ficheros/fichero.txt";
-export const _filePath2 = "src/ficheros/fichero3.txt";
+const _filePath = "src/files/fichero.txt";
+export const _filePath2 = "src/files/fichero3.txt";
 
 const main = async() => {
   const readWordsFile = new ReadWordsFile(_filePath);
