@@ -1,5 +1,7 @@
 import express from "express";
 import { routeDise } from "./routes/dise.route";
+import { deleteFilm } from "./routes/film/delete.route";
+import { getFilms } from "./routes/film/get.route";
 import { createFilm } from "./routes/film/post.route";
 export const app = express();
 const port = 3000 || process.env.PORT;
@@ -13,6 +15,8 @@ app.get("/", (req: any, res: any) => {
 // Use: http://localhost:3000/Dise?sides=[number]
 routeDise(app);
 createFilm(app);
+getFilms(app);
+deleteFilm(app);
 
 app.listen(port, () => {
   console.log(`Dise app listening on port ${port}`);
