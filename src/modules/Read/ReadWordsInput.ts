@@ -5,10 +5,7 @@ export class ReadWordsInput extends ReadWords {
     super(input);
   }
 
-  readWords(): Promise<string[]> {
-    return new Promise((resolve) => {
-      const words = this.input.split(" ");
-      resolve(words);
-    });
+  async readWords(): Promise<string[]> {
+    return this.input.split(" ");
   }
 }
