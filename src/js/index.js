@@ -17,9 +17,7 @@ const main = async() => {
   const countPattern = new CountPattern(words, "a");
   const aTimes = countPattern.count();
   console.log(words, wordsLength, aTimes);
-
-  const formatedWords = words.join("\n");
-  const writeWordsFile = new WriteWordsFile(formatedWords, _filePath2);
+  const writeWordsFile = new WriteWordsFile(words, _filePath2);
   writeWordsFile.writeWords();
 };
 

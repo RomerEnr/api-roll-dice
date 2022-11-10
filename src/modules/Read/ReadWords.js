@@ -1,16 +1,16 @@
-export class ReadWords {
-  constructor(input) {
-    this.input = input;
-  }
-
-  readWords() {
-    return new Promise((resolve, reject) => {
-      if (typeof this.string !== "string") {
-        resolve(this.string);
-      } else {
-        const error = new Error("Parameter is not an string.");
-        reject(error);
-      }
-    });
-  }
-}
+"use strict";
+exports.__esModule = true;
+exports.ReadWords = void 0;
+var ReadWords = /** @class */ (function () {
+    function ReadWords(input) {
+        this.input = input;
+    }
+    ReadWords.prototype.readWords = function () {
+        var _this = this;
+        return new Promise(function (resolve) {
+            resolve([_this.input]);
+        });
+    };
+    return ReadWords;
+}());
+exports.ReadWords = ReadWords;

@@ -1,7 +1,6 @@
 module.exports = {
   env: {
-    browser: true,
-    es2021: true
+    browser: false
   },
   extends: [
     "@cowcoders/eslint-config/ts"
