@@ -13,9 +13,3 @@ routeDise(app);
 app.listen(port, () => {
   console.log(`Dise app listening on port ${port}`);
 });
-
-export const initServer = (port) => {
-  app.listen(port, () => {
-    console.log(`App corriendo en el puerto ${port}`);
-  });
-};

@@ -1,9 +1,9 @@
 import express from "express";
-import { routeDise } from "./routes/dise.route.js";
+import { routeDise } from "./routes/dise.route";
 const app = express();
 const port = 3000 || process.env.PORT;
 
-app.get("/", (req, res) => {
+app.get("/", (req: any, res: any) => {
   res.send("Dise API.");
 });
 
@@ -13,9 +13,3 @@ routeDise(app);
 app.listen(port, () => {
   console.log(`Dise app listening on port ${port}`);
 });
-
-export const initServer = (port) => {
-  app.listen(port, () => {
-    console.log(`App corriendo en el puerto ${port}`);
-  });
-};
