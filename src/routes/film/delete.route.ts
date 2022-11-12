@@ -1,14 +1,16 @@
-import { films } from "../../index";
+import { deleteMovie } from "../../modules/Film/deleteMovie";
 
 export const deleteFilm = (app: any) => {
-  app.delete("/film/:year", (req: any, res: any) => {
-    const { year } = req.params;
-    const film = films.find((film) => film.year === parseInt(year));
-    if (film) {
-      films.splice(films.indexOf(film), 1);
-      res.json({ message: "Film deleted" });
-    } else {
-      res.json({ message: "Film not found" });
+  app.delete("/film/:id", (req: any, res: any) => {
+    const { id } = req.params;  
+
+    try {
+      const movie = deleteMovie(parseInt(id));
+      res.status(200).json(movie);
+    } catch (error){
+      res.status(400).json({ error });
+
     }
+
   });
 };

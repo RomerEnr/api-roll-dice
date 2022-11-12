@@ -1,16 +1,14 @@
-import { films } from "../../index";
-
+import { updateMovie } from "../../modules/Film/updateMovie";
 export const updateFilm = (app: any) => {
-  app.put("/film/:year", (req: any, res: any) => {
-    const { year } = req.params;
-    const film = films.find((film) => film.year === parseInt(year));
-    if (film) {
-      film.name = req.body.name;
-      film.autor = req.body.autor;
-      film.year = req.body.year;
-      res.json({ message: "Film updated" });
-    } else {
-      res.json({ message: "Film not found" });
+  app.put("/film/:id", (req: any, res: any) => {
+    const { id } = req.params;
+    const { title, autor, year } = req.body;
+
+    try {
+      const movie = updateMovie(parseInt(id), title, autor, year);
+      res.status(200).json(movie);
+    } catch (error) {
+      res.status(400).json({ error });
     }
   });
 };
