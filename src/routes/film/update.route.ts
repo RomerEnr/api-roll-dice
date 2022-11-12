@@ -1,12 +1,16 @@
-import { Film } from "../../modules/Film/Film";
-import { films } from "../../server";
+import { films } from "../../index";
+
 export const updateFilm = (app: any) => {
-  app.update("/Film", (req: any, res: any) => {
-    const body = req.body();
-    const name = req.query.name;
-    const filmFound = films.filter(film => film.name == name);
-    
-    const dice = new Dise(sides);
-    res.json({ "side": dice.rollDice() });
+  app.put("/film/:year", (req: any, res: any) => {
+    const { year } = req.params;
+    const film = films.find((film) => film.year === parseInt(year));
+    if (film) {
+      film.name = req.body.name;
+      film.autor = req.body.autor;
+      film.year = req.body.year;
+      res.json({ message: "Film updated" });
+    } else {
+      res.json({ message: "Film not found" });
+    }
   });
 };
